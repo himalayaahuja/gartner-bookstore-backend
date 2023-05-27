@@ -24,7 +24,7 @@ export class Review {
 }
 export const ReviewSchema = SchemaFactory.createForClass(Review);
 
-@Schema({ timestamps: true })
+@Schema()
 export class Book {
   @Prop({ required: true })
   title: string;
@@ -32,8 +32,20 @@ export class Book {
   @Prop({ required: true, unique: true })
   isbn: string;
 
+  @Prop({ required: true })
+  coverImage: string;
+
   @Prop({ required: true, type: [String] })
   authors: string[];
+
+  @Prop({ required: true, type: [String] })
+  genre: string[];
+
+  @Prop({ required: true })
+  publisher: string;
+
+  @Prop({ type: Date, required: true })
+  publicationDate: Date;
 
   @Prop({ required: true, min: 0 })
   price: number;
