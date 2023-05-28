@@ -7,6 +7,7 @@ import { BooksModule } from './modules/books/books.module';
 import { UsersModule } from './modules/users/users.module';
 import { SeedsModule } from './modules/seeds/seeds.module';
 import { CommandModule } from 'nestjs-command';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CommandModule } from 'nestjs-command';
     UsersModule,
     CommandModule,
     SeedsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

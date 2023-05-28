@@ -17,4 +17,12 @@ export class UsersService {
     const upsertMasterBank = await this.userModel.findOneAndUpdate(filter, update, { new: true, upsert: true, runValidators: true }).exec();
     return upsertMasterBank;
   }
+
+  async findOneByEmail(email: string): Promise<User | undefined> {
+    return this.userModel.findOne({ email }).lean().exec();
+  }
+
+  async findUserById(_id: string): Promise<User | undefined> {
+    return this.userModel.findOne({ _id }).lean().exec();
+  }
 }
