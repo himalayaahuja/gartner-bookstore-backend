@@ -49,6 +49,7 @@ export class BooksService {
         totalPages: Math.ceil(itemsAggregateCount[0].totalItems / BOOK_PAGE_SIZE),
         currentPage: filterQueryParams.page,
       },
+      filters: filterQueryParams,
     };
   }
 
