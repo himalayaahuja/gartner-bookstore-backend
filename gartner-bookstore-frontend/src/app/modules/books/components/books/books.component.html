@@ -1,0 +1,102 @@
+<!-- Page Content -->
+<section>
+  <div id="page-content-wrapper" class="mt-70">
+    <div id="content">
+      <div class="container-fluid">
+        <div class="tab-content-wrapper">
+          <div class="row">
+            <div class="col-12">
+              <div class="top-content clearfix">
+                <ul class="list-unstyled d-flex float-right mb-0">
+                  <li>
+                    <a style="cursor: pointer;" class="btn-theam btn-hover-yellow">
+                      <img src="assets/images/supplier-icon.png" class="btn-img" /> Add User
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="data-table-wrapper admin-wrapper">
+                <table id="example" class="display table table-dark" cellspacing="0" width="100%">
+                  <!-- loader -->
+                  <div class="loader-wrap">
+                    <ngx-spinner bdColor="rgba(0, 0, 0, 0.7)" size="default" color="#fbc31e" type="ball-clip-rotate"
+                      [fullScreen]="false">
+                      <p style="color: white; margin-top: 100px;"> Loading... </p>
+                    </ngx-spinner>
+                  </div>
+                  <!-- loader -->
+                  <thead>
+                    <tr>
+                      <th>
+                        Title</th>
+                      <th>
+                        Authors</th>
+                      <th>
+                        Price</th>
+                      <th>Rating</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- <tr style="cursor: pointer;" *ngFor="let user of users; let u = index">
+                      <td>{{user.firstName}} {{user.lastName}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.roles[0].displayName}}</td>
+                      <td>
+                        <div class="d-flex align-items-center justify-content-end">
+                          <div class="mr-3">
+                            <a href="javascript:void(0);" (click)="openEditUserModal(u)"
+                              class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Edit</a>
+                          </div>
+                          <div class="progress_cross text-right delete-project" style="width: 10%;"
+                            (click)="openDeleteUserModal(user.id)">
+                            <span>&#10005;</span>
+                          </div>
+                        </div>
+                      </td>
+                    </tr> -->
+
+                    <tr>
+                      <td style="text-align: center;" colspan="4">No data available</td>
+                      <td style="text-align: center;">&nbsp;</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </div>
+            <!-- <div class="col-12">
+              <div *ngIf="users?.length" class="NewPaginationContainer">
+                <ul>
+                  <li style="cursor: pointer;" (click)="loadPreviousPage()"
+                    [ngClass]="{'disabled': (pagingMeta?.currentPage === 1)}">
+                    <a style="cursor: pointer;"><img src="assets/images/arrow-left.png"></a>
+                  </li>
+                  <li (click)="loadPage(page)" [ngClass]="{'disabled': (pagingMeta?.currentPage === page)}"
+                    style="cursor: pointer;" *ngFor="let page of arrPages">
+                    <a style="cursor: pointer;">{{page}}</a>
+                  </li>
+                  <li style="cursor: pointer;" (click)="loadNextPage()"
+                    [ngClass]="{'disabled': (pagingMeta?.currentPage === pagingMeta?.totalPages)}">
+                    <a style="cursor: pointer;"><img src="assets/images/arrow-right.png"></a>
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+            <!-- delete popup start-->
+
+            <!-- delete popup end -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

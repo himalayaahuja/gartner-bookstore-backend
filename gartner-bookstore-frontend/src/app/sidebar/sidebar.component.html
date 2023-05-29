@@ -1,0 +1,25 @@
+<!-- Sidebar -->
+<section>
+  <nav class="fixed-top align-top" id="sidebar-wrapper" role="navigation">
+    <div class="simplebar-content" style="padding: 0px;">
+      <a class="sidebar-brand" href="index.html">
+        <!-- <span class="align-middle">Admin Template</span> -->
+        <img src="assets/images/logo@2x.png" alt="logo" class="img-fluid align-middle" />
+      </a>
+      <div class="left-sidebar-content">
+        <ul class="navbar-nav align-self-stretch sidebar-elements tabs">
+
+          <li>
+            <a [routerLink]="[homeRoutePath]" class="nav-link text-left"
+              [ngClass]="{'active': (activePage === homeRoutePath) || (routeContains(homeRoutePath))}" role="button">
+              <img class="mu-img" src="assets/images/ic_create_24px@2x.png" /> Home
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</section>
+<!-- /#sidebar-wrapper -->

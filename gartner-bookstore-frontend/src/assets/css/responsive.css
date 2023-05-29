@@ -1,0 +1,514 @@
+ /* responsive css */
+ 
+ @media (max-width: 991.98px) {
+     /* Login Pages */
+     .dtj-login-form {
+         width: 100%;
+     }
+     .dtj-form {
+         min-width: 100%;
+     }
+ }
+ 
+ @media (max-width: 1440px) {
+     .inner-wrapper-calendar {
+         max-width: 600px;
+         padding: 15px;
+     }
+ }
+ 
+ @media (max-width: 1199.98px) {}
+ /* max width media query */
+ 
+ @media (max-width:2560px) and (min-width:2300px) {
+     .dtj-login-form {
+         padding: 390px 0 150px;
+         align-items: baseline;
+     }
+     .dtj-login .btn-login.send-reguest {
+         width: 366px;
+         margin-top: 15px;
+     }
+     /* homepage */
+     .chatting-wrap {
+         margin-top: 145px;
+     }
+ }
+ 
+ @media (max-width:2560px) and (min-width:2150px) {
+     select.form-control {
+         font-size: 20px;
+     }
+     /* sign in form */
+     #supplier-table thead tr th:first-child {
+         width: 400px !important;
+     }
+     .logo-wrap img {
+         width: 217px;
+     }
+     .dtj-logo-para {
+         font-size: 28px;
+         margin-bottom: 85px;
+     }
+     .form-control,
+     .label-checkbox,
+     .text-decoration-none {
+         font-size: 23px;
+     }
+     .dtj-login .btn-login {
+         width: 296px;
+         padding: 18px 10px;
+         margin-top: 68px;
+         font-size: 28px;
+     }
+     .dtj-form {
+         min-width: 640px;
+     }
+     .dtj-form .form-group {
+         margin-bottom: 69px;
+     }
+     .form-check-wrap {
+         padding-top: 15px;
+     }
+     .mobel-header h4 {
+         font-size: 23px;
+     }
+     .custom-modal {
+         max-width: 539px;
+     }
+     .custom-modal .modal-header {
+         padding: 32px 15px;
+     }
+     .custom-modal .modal-header h5 {
+         font-size: 23px;
+     }
+     .custom-modal .modal-body {
+         padding: 30px 15px;
+     }
+     .custom-modal .btn-close {
+         width: 150px;
+         padding: 8px 0;
+         font-size: 23px;
+     }
+     .label-checkbox {
+         padding-left: 42px;
+     }
+     .label-checkbox::before {
+         width: 28px;
+         height: 28px;
+     }
+     /* homepage */
+     .chatting-wrap .dropdown-menu .dropdown-item {
+         font-size: 23px;
+     }
+     .chatting-wrap .dropdown-menu {
+         top: 20px !important;
+         left: 0px !important;
+     }
+     .my-navbar {
+         height: 115px;
+     }
+     #sidebar-wrapper {
+         width: 280px;
+     }
+     .my-navbar {
+         margin-left: 280px;
+     }
+     #page-content-wrapper {
+         width: calc(100% - 280px);
+         margin-left: 280px;
+         padding: 90px 50px 50px 50px;
+     }
+     .sidebar-brand {
+         display: inline-block;
+         padding: 25px 20px 25px 35px;
+     }
+     .sidebar-brand img {
+         width: 217px;
+     }
+     #top-header .navbar-nav {
+         padding-right: 45px;
+     }
+     #top-header.navbar-light .navbar-nav .nav-link {
+         font-size: 23px;
+         font-weight: 600;
+     }
+     #top-header .nav-item.dropdown {
+         margin-right: 20px;
+     }
+     #top-header.navbar-light .navbar-nav .nav-link img {
+         width: 31px;
+         height: 31px;
+     }
+     .left-sidebar-content {
+         padding-top: 160px;
+     }
+     .left-sidebar-content .navbar-nav>li>a {
+         font-size: 23px;
+         padding: 30px 10px 30px 42px !important;
+     }
+     .left-sidebar-content .navbar-nav>li>a img {
+         width: 23px;
+     }
+     .btn-theam {
+         padding: 15px 30px;
+         font-size: 20px;
+     }
+     #content {
+         padding: 45px 15px;
+     }
+     /* .list-unstyled li:first-child {
+    margin-right: 20px;
+} */
+     .top-content::after {
+         bottom: -48px;
+     }
+     table thead th,
+     table thead td {
+         padding: 45px 10px 45px 0;
+         font-size: 22px;
+     }
+     table tbody th,
+     table tbody td,
+     table tbody th,
+     table tbody td {
+         font-size: 22px;
+         padding: 24px 10px 24px;
+     }
+     .progress {
+         height: 25px;
+     }
+     .paginate_button.previous,
+     .paginate_button,
+     .paginate_button.next {
+         width: 40px;
+         height: 40px;
+     }
+     .NewPaginationContainer ul li {
+         width: 40px;
+         height: 40px;
+     }
+     .NewPaginationContainer ul li a {
+         font-size: 20px;
+     }
+     .NewPaginationContainer ul li img {
+         max-width: 80%;
+     }
+     .status-progress {
+         width: 600px !important;
+     }
+     .progress_cross {
+         font-size: 11px;
+     }
+     .NewPaginationContainer {
+         margin-top: 180px;
+     }
+     /* supplier */
+     #supplier-table_wrapper thead tr th:first-child {
+         width: 350px !important;
+     }
+     #supplier-table_wrapper thead tr th:nth-child(2) {
+         width: 400px !important;
+     }
+     textarea.form-control {
+         height: 135px;
+     }
+     .model-btn {
+         font-size: 20px;
+     }
+     /* sample page */
+     #content.sample-section {
+         padding: 20px 15px;
+     }
+     .sample-factory-wrapper {
+         padding: 0 10px;
+     }
+     .sample-factory-wrapper .top-content {
+         align-items: flex-end;
+         margin-bottom: 14px;
+     }
+     .sample-factory-wrapper .top-content h3 {
+         font-size: 44px;
+         padding-bottom: 18px;
+     }
+     .sample-factory-wrapper .top-content::after {
+         bottom: 0;
+     }
+     .sample-factory-wrapper .top-content .btn-theam {
+         width: 153px;
+         text-align: center;
+     }
+     .sample-factory-header .fz17,
+     .sample-factory-header .fz15,
+     .sample-factory-wrapper p {
+         font-size: 26px;
+     }
+     .contact-note-wrap {
+         margin: 35px 0;
+     }
+     .milestone_part_inner {
+         /* margin-left: 35px; */
+     }
+     /* edit popup  */
+     .edit-detail-block {
+         max-width: 1400px;
+         padding: 40px;
+     }
+     .edit-detail-block h3 {
+         font-size: 28px;
+     }
+     .edit-detail-block label {
+         font-size: 26px;
+     }
+     .edit-detail-block h6 {
+         font-size: 23px;
+     }
+     .edit-detail-block .model-btn {
+         font-size: 20px;
+     }
+     .btn {
+         font-size: 20px;
+     }
+     .cancel-wrapper-save {
+         margin-top: 100px;
+     }
+     /* delete popup */
+     .delete-popup-wrap .mobel-header {
+         padding: 35px 0;
+     }
+     .delete-popup-wrap .modal-btn-wrap {
+         padding: 30px 0;
+     }
+     /* distsuit-core-section */
+     .distsuit-core-section#content {
+         padding: 30px 30px;
+     }
+     .distsuit-core-section .edition-wrap.top-content h3 {
+         font-size: 44px;
+     }
+     .distsuit-core-section .fz17 {
+         font-size: 26px;
+     }
+     .distsuit-core-section .fz15 {
+         font-size: 23px;
+     }
+     .distsuit-core-section p {
+         font-size: 23px;
+     }
+     .project-disc-wrap {
+         margin-bottom: 60px;
+     }
+     .checkmark {
+         width: 32px;
+         height: 32px;
+     }
+     .custom_check {
+         padding-left: 65px;
+     }
+     .milestone_section .checkmark {
+         width: 35px;
+         height: 35px;
+     }
+     .icon-img {
+         width: 30px;
+     }
+     .note_part {
+         margin-bottom: 40px;
+     }
+     .notes-wrapper {
+         padding-left: 100px;
+     }
+     .notify_email_part {
+         margin-top: 45px;
+     }
+     .notify-text .milestone-input {
+         width: 65%;
+     }
+     .custom_btn {
+         font-size: 23px;
+     }
+     .notify-text .milestone-text {
+         margin-left: 10px;
+     }
+     .distsuit-core-section .border-white {
+         margin-top: 44px;
+     }
+     .distsuit-core-section .attachment_part {
+         margin-top: 28px;
+     }
+     .distsuit-core-section .attachment_part .attachment_img {
+         width: 78px;
+     }
+     .upload_attach {
+         width: 24px;
+     }
+     .upload_file .img-fluid {
+         width: 103px;
+         margin-bottom: 6px;
+     }
+     .milestone_section .custom_btn {
+         min-width: 154px;
+     }
+     .custom_btn {
+         min-width: 154px;
+     }
+     /* project-name-section */
+     #content.project-page-wrapper {
+         padding: 0 0px;
+     }
+     #content.project-page-wrapper .container-fluid {
+         padding: 0;
+     }
+     .project-name-section {
+         max-width: 2000px;
+         padding: 18px 35px;
+         background-color: #161B2E;
+     }
+     .project-name-section h3 {
+         font-size: 40px;
+     }
+     .project-name-row {
+         margin-top: 40px;
+     }
+     .project-name-row label {
+         font-size: 26px;
+     }
+     .calender-pop-btn img {
+         width: 28px;
+     }
+     .custom_check .checkmark:after,
+     .milestone_section .custom_check .checkmark:after {
+         left: 9px;
+         top: 4px;
+         width: 12px;
+         height: 20px;
+     }
+     .milestone_section p {
+         font-size: 18px;
+     }
+     .milestone_section label {
+         font-size: 18px;
+         margin-bottom: 10px !important;
+     }
+     .project-name-row .milestone_part p {
+         font-size: 26px;
+     }
+     .project-name-row .milestone_part p img {
+         width: 24px;
+     }
+     body {
+         font-size: 23px;
+         line-height: 1.8;
+     }
+     .calender-pop-btn,
+     .calendar-pop-text,
+     .milestone_section .calendar-pop-text,
+     .milestone_section .calendar-pop-btn {
+         font-size: 22px;
+     }
+     .milestone_part .text-left {
+         padding-left: 50px;
+     }
+     /* calender popup */
+     .table-calendar td,
+     .table-calendar th {
+         padding: 10px;
+     }
+     .datepicker.dropdown-menu td,
+     .datepicker.datepicker-inline td {
+         padding: 12px !important;
+     }
+     /* task module */
+     .task-left-wrap {
+         width: calc(100% - 350px);
+     }
+     .task-right-wrap {
+         width: 330px;
+     }
+     /* chat mobule */
+     .accordion-container p,
+     .accordion-container {
+         font-size: 18px;
+     }
+     /*======================================
+        ticket module
+  =======================================*/
+     .filter-input-wrap h4 {
+         font-size: 22px;
+     }
+     .ticket-editor {
+         max-width: 1725px;
+     }
+     .filter-text-left,
+     .filter-text {
+         font-size: 23px;
+     }
+     /* edition version page */
+     .editior-wrapper p,
+     .editior-wrapper label,
+     .milestone_section p,
+     .milestone_section label {
+         font-size: 23px;
+     }
+     .tab-content-wrapper h3 {
+         font-size: 44px;
+     }
+     .col-form-label {
+         font-size: 26px;
+     }
+     .upload_file h4 {
+         font-size: 16px;
+     }
+     .upload_file p {
+         font-size: 13px;
+     }
+     .single-datepicker-btn {
+         font-size: 22px;
+     }
+ }
+ 
+ @media (max-width:1800px) {
+     .upload_file h4 {
+         font-size: 13px;
+     }
+     .upload_file p {
+         font-size: 12px;
+     }
+ }
+ 
+ @media (max-width: 1440px) {
+     body,
+     html {
+         font-size: 14px;
+     }
+     p {
+         font-size: 15px;
+     }
+     .container-calendar {
+         max-width: 600px;
+         padding: 15px;
+     }
+     .calender-button {
+         margin-top: 30px;
+     }
+     .table-calendar td,
+     .table-calendar th {
+         font-size: 16px;
+     }
+     #monthAndYear {
+         font-size: 22px;
+     }
+     .cancel-btn,
+     .save-btn {
+         width: 135px;
+         font-size: 16px;
+     }
+ }
+ 
+ @media(max-width:1399px) {
+     .fz13 {
+         font-size: 11px;
+     }
+ }
+ 
+ @media(max-width:768px) {}
