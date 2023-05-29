@@ -36,3 +36,51 @@ lerna-debug.log*
 
 # Custom
 .env
+
+# --------------- gartner-bookstore-frontend-----------------------------------------
+
+# compiled output
+gartner-bookstore-frontend/dist
+gartner-bookstore-frontend/tmp
+gartner-bookstore-frontend/out-tsc
+# Only exists if Bazel was run
+gartner-bookstore-frontend/bazel-out
+
+# dependencies
+gartner-bookstore-frontend/node_modules
+
+# profiling files
+gartner-bookstore-frontend/chrome-profiler-events*.json
+gartner-bookstore-frontend/speed-measure-plugin*.json
+
+# IDEs and editors
+gartner-bookstore-frontend/.idea
+gartner-bookstore-frontend/.project
+gartner-bookstore-frontend/.classpath
+gartner-bookstore-frontend/.c9/
+gartner-bookstore-frontend/*.launch
+gartner-bookstore-frontend/.settings/
+gartner-bookstore-frontend/*.sublime-workspace
+
+# IDE - VSCode
+gartner-bookstore-frontend/.vscode/*
+gartner-bookstore-frontend/!.vscode/settings.json
+gartner-bookstore-frontend/!.vscode/tasks.json
+gartner-bookstore-frontend/!.vscode/launch.json
+gartner-bookstore-frontend/!.vscode/extensions.json
+gartner-bookstore-frontend/.history/*
+
+# misc
+gartner-bookstore-frontend/.sass-cache
+gartner-bookstore-frontend/connect.lock
+gartner-bookstore-frontend/coverage
+gartner-bookstore-frontend/libpeerconnection.log
+gartner-bookstore-frontend/npm-debug.log
+gartner-bookstore-frontend/yarn-error.log
+gartner-bookstore-frontend/testem.log
+gartner-bookstore-frontend/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
