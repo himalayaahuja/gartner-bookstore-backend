@@ -10,11 +10,7 @@ export class GetBooksQuery {
 
   @IsOptional()
   @IsString()
-  title = '';
-
-  @IsOptional()
-  @IsString()
-  author = '';
+  query = '';
 
   @IsOptional()
   @Min(0)

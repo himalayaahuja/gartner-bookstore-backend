@@ -12,8 +12,7 @@ export class BooksService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
   async findAll(filterQueryParams: GetBooksQuery): Promise<Book[]> {
-    const searchFilter =
-      filterQueryParams.title || filterQueryParams.author ? { $text: { $search: `${filterQueryParams.title} ${filterQueryParams.author}` } } : {};
+    const searchFilter = filterQueryParams.query ? { $text: { $search: `${filterQueryParams.query}` } } : {};
     const priceFilter = { $and: [{ price: { $gte: filterQueryParams.priceRangeFrom } }, { price: { $lt: filterQueryParams.priceRangeTo } }] };
     return this.bookModel
       .aggregate([
