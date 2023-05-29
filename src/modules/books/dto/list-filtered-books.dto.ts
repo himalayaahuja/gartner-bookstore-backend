@@ -10,7 +10,7 @@ export class GetBooksQuery {
 
   @IsOptional()
   @IsString()
-  query = '';
+  searchQuery = '';
 
   @IsOptional()
   @Min(0)
