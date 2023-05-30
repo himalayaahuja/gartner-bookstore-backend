@@ -42,27 +42,29 @@
                       <th></th>
                     </tr>
                   </thead>
-
+                  <colgroup>
+                    <col span="1" style="width: 30%;">
+                    <col span="1" style="width: 30%;">
+                    <col span="1" style="width: 15%;">
+                    <col span="1" style="width: 15%;">
+                  </colgroup>
                   <tbody>
-                    <!-- <tr style="cursor: pointer;" *ngFor="let user of users; let u = index">
-                      <td>{{user.firstName}} {{user.lastName}}</td>
-                      <td>{{user.email}}</td>
-                      <td>{{user.roles[0].displayName}}</td>
+                    <tr style="cursor: pointer;" *ngFor="let book of books; let i = index">
+                      <td>{{book.title}}</td>
+                      <td>{{book.authors[0]}}</td>
+                      <td>{{book.price}}</td>
+                      <td>{{book.rating}}</td>
                       <td>
                         <div class="d-flex align-items-center justify-content-end">
                           <div class="mr-3">
-                            <a href="javascript:void(0);" (click)="openEditUserModal(u)"
-                              class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Edit</a>
-                          </div>
-                          <div class="progress_cross text-right delete-project" style="width: 10%;"
-                            (click)="openDeleteUserModal(user.id)">
-                            <span>&#10005;</span>
+                            <a href="javascript:void(0);"
+                              class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Add to cart</a>
                           </div>
                         </div>
                       </td>
-                    </tr> -->
+                    </tr>
 
-                    <tr>
+                    <tr *ngIf="!books.length">
                       <td style="text-align: center;" colspan="4">No data available</td>
                       <td style="text-align: center;">&nbsp;</td>
                     </tr>
@@ -72,8 +74,8 @@
 
               </div>
             </div>
-            <!-- <div class="col-12">
-              <div *ngIf="users?.length" class="NewPaginationContainer">
+            <div class="col-12">
+              <div *ngIf="books?.length" class="NewPaginationContainer">
                 <ul>
                   <li style="cursor: pointer;" (click)="loadPreviousPage()"
                     [ngClass]="{'disabled': (pagingMeta?.currentPage === 1)}">
@@ -89,7 +91,7 @@
                   </li>
                 </ul>
               </div>
-            </div> -->
+            </div>
             <!-- delete popup start-->
 
             <!-- delete popup end -->

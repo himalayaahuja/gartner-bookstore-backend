@@ -32,23 +32,38 @@ export class BooksService {
       filterQueryParams.ratingMin === 0
         ? { $match: { $or: [{ rating: { $gte: filterQueryParams.ratingMin } }, { rating: null }] } }
         : { $match: { rating: { $gte: filterQueryParams.ratingMin } } },
+      { $group: { _id: null, maxPriceRange: { $max: '$price' }, totalItems: { $sum: 1 }, items: { $push: '$$ROOT' } } },
+      { $unwind: '$items' },
+      { $project: { _id: 0 } },
     ];
-    const itemsAggregateCount = await this.bookModel.aggregate(booksAggregateQuery).count('totalItems').exec();
-    const items = await this.bookModel
+
+    const aggregateCursor = this.bookModel
       .aggregate(booksAggregateQuery)
       .skip((filterQueryParams.page - 1) * BOOK_PAGE_SIZE)
       .limit(BOOK_PAGE_SIZE)
-      .exec();
+      .cursor();
+
+    const meta: any = {};
+    const items = [];
+
+    await aggregateCursor.eachAsync((doc, i) => {
+      items.push(doc.items);
+      meta.totalItems = doc.totalItems;
+      meta.itemCount =
+        doc.totalItems < BOOK_PAGE_SIZE
+          ? doc.totalItems
+          : doc.totalItems >= filterQueryParams.page * BOOK_PAGE_SIZE
+            ? BOOK_PAGE_SIZE
+            : doc.totalItems % BOOK_PAGE_SIZE;
+      meta.itemsPerPage = BOOK_PAGE_SIZE;
+      meta.totalPages = Math.ceil(doc.totalItems.totalItems / BOOK_PAGE_SIZE);
+      meta.currentPage = filterQueryParams.page;
+      filterQueryParams.priceRangeTo = doc.maxPriceRange;
+    });
 
     return {
       items,
-      meta: {
-        totalItems: itemsAggregateCount[0].totalItems,
-        itemCount: items.length,
-        itemsPerPage: BOOK_PAGE_SIZE,
-        totalPages: Math.ceil(itemsAggregateCount[0].totalItems / BOOK_PAGE_SIZE),
-        currentPage: filterQueryParams.page,
-      },
+      meta,
       filters: filterQueryParams,
     };
   }
