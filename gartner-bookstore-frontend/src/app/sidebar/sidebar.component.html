@@ -12,7 +12,13 @@
           <li>
             <a [routerLink]="[homeRoutePath]" class="nav-link text-left"
               [ngClass]="{'active': (activePage === homeRoutePath) || (routeContains(homeRoutePath))}" role="button">
-              <img class="mu-img" src="assets/images/ic_create_24px@2x.png" /> Home
+              <img class="mu-img" src="assets/images/ic_create_24px@2x.png" /> Browse Books
+            </a>
+          </li>
+
+          <li *ngIf="!authUser">
+            <a [routerLink]="[loginRoutePath]" class="nav-link text-left" role="button">
+              <img class="mu-img" src="assets/images/icon_customers@2x.png" /> Login
             </a>
           </li>
 

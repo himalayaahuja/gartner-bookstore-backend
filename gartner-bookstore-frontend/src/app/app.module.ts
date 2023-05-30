@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { effects, reducers } from './store';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, SidebarComponent],
@@ -20,8 +21,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     HttpClientModule,
     LoadingBarModule,
-    EffectsModule.forRoot({}),
-    StoreModule.forRoot({}),
+    EffectsModule.forRoot(effects),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [CustomPreloadingStrategy],

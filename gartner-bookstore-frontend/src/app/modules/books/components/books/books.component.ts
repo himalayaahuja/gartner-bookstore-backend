@@ -8,6 +8,8 @@ import { getAllBooks, getFilters, getPagingMeta } from '../../store/books/select
 import { Book } from '../../store/books/models/book.model';
 import { PagingMeta } from '../../store/books/models/paging-meta.model';
 import { LabelType, Options, ChangeContext, PointerType } from 'ngx-slider-v2';
+import { AppState as AuthAppState } from 'src/app/store';
+import { User } from 'src/app/store/auth/models/auth-user.model';
 
 @Component({
   selector: 'app-books',
@@ -23,6 +25,8 @@ export class BooksComponent implements OnInit, OnDestroy {
   arrPages: Array<number> = [];
   filtersSubscription!: Subscription;
   bookSearchFilterSubscription!: Subscription;
+  authSubscription: Subscription | null = null;
+  authUser: User | null = null;
 
   priceFilterOptions: Options = {
     floor: 0,
@@ -44,7 +48,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   @ViewChild('bookSearchInput', { static: true }) projectSearchInput: ElementRef | undefined;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private authStore: Store<AuthAppState>) {}
   ngOnDestroy(): void {
     if (this.booksSubscription) {
       this.booksSubscription.unsubscribe();
@@ -58,6 +62,9 @@ export class BooksComponent implements OnInit, OnDestroy {
 
     if (this.bookSearchFilterSubscription) {
       this.bookSearchFilterSubscription.unsubscribe();
+    }
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
     }
   }
   ngOnInit(): void {
@@ -87,6 +94,12 @@ export class BooksComponent implements OnInit, OnDestroy {
         this.priceFilterMaxValue = Math.ceil(filters.priceRangeTo as number);
       }
     });
+
+    this.authSubscription = this.authStore
+      .select((state) => state.auth)
+      .subscribe((authState) => {
+        this.authUser = authState.user;
+      });
 
     // binding project filter
     this.bookSearchFilterSubscription = this.bindBookSearchFilter();
