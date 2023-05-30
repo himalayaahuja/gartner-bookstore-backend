@@ -3218,3 +3218,16 @@ option {
 .ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
   background-color: #fff !important;
 }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+b {
+  font-weight: lighter;
+}

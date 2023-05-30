@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxSliderModule } from 'ngx-slider-v2';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const routes = [
@@ -29,6 +30,7 @@ const routes = [
     NgxSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSnackBarModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('books', bookReducer),
     EffectsModule.forFeature([BookEffects]),

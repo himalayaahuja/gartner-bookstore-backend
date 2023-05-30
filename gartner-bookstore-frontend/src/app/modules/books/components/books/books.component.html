@@ -89,11 +89,12 @@
                       <td>{{book.title}}</td>
                       <td>{{ getAuthors(book.authors) }}</td>
                       <td>{{book.price}}</td>
-                      <td>{{book.rating}}</td>
+                      <td *ngIf="book.rating">{{book.rating}}</td>
+                      <td *ngIf="!book.rating">No Ratings yet</td>
                       <td>
                         <div class="d-flex align-items-center justify-content-end">
                           <div class="mr-3">
-                            <a href="javascript:void(0);"
+                            <a (click)="openSnackBar('Please login to continue', 'Login')" href="javascript:void(0);"
                               class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Add to cart</a>
                           </div>
                         </div>
