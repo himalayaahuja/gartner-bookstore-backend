@@ -148,7 +148,7 @@ a.browse-text {
 }
 
 .input-block-filt {
-  width: calc(16.66% - 18px);
+  width: calc(20.66% - 18px);
 }
 .input-block-filt select {
   background-color: transparent;
@@ -176,3 +176,4 @@ a.browse-text {
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: white !important;
 }
+/* 303c4e */

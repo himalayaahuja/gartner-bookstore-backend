@@ -47,7 +47,7 @@ export class Book {
   @Prop({ type: Date, required: true })
   publicationDate: Date;
 
-  @Prop({ required: true, min: 0 })
+  @Prop({ required: true, min: 0, index: 1 })
   price: number;
 
   @Prop({ required: true, min: 0 })

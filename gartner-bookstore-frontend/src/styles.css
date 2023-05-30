@@ -2387,7 +2387,7 @@ input::placeholder {
 }
 
 .filter-input-wrap .input-block-wrapper .input-block-filt {
-  width: calc(16.66% - 18px);
+  width: calc(20.66% - 18px);
 }
 
 .filter-input-wrap .input-block-wrapper .input-block-filt .form-control {
@@ -3197,4 +3197,24 @@ option {
 
 .body-hidden .chat-page-wrapper {
   top: 25px;
+}
+
+/* overrides */
+
+.ngx-slider .ngx-slider-pointer {
+  background-color: #303c4e !important;
+}
+
+.ngx-slider .ngx-slider-selection {
+  z-index: 1;
+  background: #fff !important;
+  border-radius: 2px;
+}
+
+.ngx-slider .ngx-slider-bar {
+  height: 3px !important;
+}
+
+.ngx-slider .ngx-slider-pointer.ngx-slider-active:after {
+  background-color: #fff !important;
 }

@@ -15,12 +15,12 @@ export class GetBooksQuery {
   @IsOptional()
   @Min(0)
   @Type(() => Number)
-  priceRangeFrom = 0;
+  priceRangeFrom: number;
 
   @IsOptional()
   @Min(0)
   @Type(() => Number)
-  priceRangeTo = Infinity;
+  priceRangeTo: number;
 
   @IsOptional()
   @Min(0)

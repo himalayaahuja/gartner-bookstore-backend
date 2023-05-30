@@ -11,6 +11,8 @@ import { BookEffects } from './store/books/effects/book.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgxSliderModule } from 'ngx-slider-v2';
+
 
 const routes = [
   {
@@ -31,6 +33,7 @@ const routes = [
     StoreModule.forFeature('books', bookReducer),
     EffectsModule.forFeature([BookEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NgxSliderModule,
   ],
 })
 export class BooksModule { }

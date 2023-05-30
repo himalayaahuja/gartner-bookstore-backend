@@ -12,8 +12,16 @@ export class BooksService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
   async findAll(filterQueryParams: GetBooksQuery): Promise<any> {
+    const minPriceAnchor = (await this.bookModel.find().sort({ price: 1 }).limit(1).exec())[0].price;
+    const maxPriceAnchor = (await this.bookModel.find().sort({ price: -1 }).limit(1).exec())[0].price;
+
     const searchFilter = filterQueryParams.searchQuery ? { $text: { $search: `${filterQueryParams.searchQuery}` } } : {};
-    const priceFilter = { $and: [{ price: { $gte: filterQueryParams.priceRangeFrom } }, { price: { $lte: filterQueryParams.priceRangeTo } }] };
+    const priceFilter = {
+      $and: [
+        { price: { $gte: filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor } },
+        { price: { $lte: filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor } },
+      ],
+    };
     const booksAggregateQuery = [
       { $match: { $and: [searchFilter, priceFilter] } },
       {
@@ -32,7 +40,15 @@ export class BooksService {
       filterQueryParams.ratingMin === 0
         ? { $match: { $or: [{ rating: { $gte: filterQueryParams.ratingMin } }, { rating: null }] } }
         : { $match: { rating: { $gte: filterQueryParams.ratingMin } } },
-      { $group: { _id: null, maxPriceRange: { $max: '$price' }, totalItems: { $sum: 1 }, items: { $push: '$$ROOT' } } },
+      {
+        $group: {
+          _id: null,
+          // minPriceRange: { $min: '$price' },
+          // maxPriceRange: { $max: '$price' },
+          totalItems: { $sum: 1 },
+          items: { $push: '$$ROOT' },
+        },
+      },
       { $unwind: '$items' },
       { $project: { _id: 0 } },
     ];
@@ -58,8 +74,13 @@ export class BooksService {
       meta.itemsPerPage = BOOK_PAGE_SIZE;
       meta.totalPages = Math.ceil(doc.totalItems / BOOK_PAGE_SIZE);
       meta.currentPage = filterQueryParams.page;
-      filterQueryParams.priceRangeTo = doc.maxPriceRange;
     });
+
+    filterQueryParams.priceRangeFrom = filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor;
+    filterQueryParams.priceRangeTo = filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor;
+
+    (filterQueryParams as any).minPriceAnchor = minPriceAnchor;
+    (filterQueryParams as any).maxPriceAnchor = maxPriceAnchor;
 
     return {
       items,

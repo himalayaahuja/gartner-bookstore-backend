@@ -26,14 +26,18 @@
                     <h4>Rating</h4>
                     <select class="form-control" name="ratingFilter" [ngModel]="filters?.ratingMin"
                       (ngModelChange)="onRatingFilterChange($event)">
-                      <option [ngValue]="">Select Rating</option>
-                      <option [ngValue]="5">5</option>
-                      <option [ngValue]="4">4 and above</option>
-                      <option [ngValue]="3">3 and above</option>
-                      <option [ngValue]="2">2 and above</option>
-                      <option [ngValue]="1">1 and above</option>
-                      <option [ngValue]="0">0 and above</option>
+                      <option [ngValue]="0">Select Rating</option>
+                      <option [ngValue]="5">Rated 5</option>
+                      <option [ngValue]="4">Rated 4 and above</option>
+                      <option [ngValue]="3">Rated 3 and above</option>
+                      <option [ngValue]="2">Rated 2 and above</option>
+                      <option [ngValue]="1">Rated 1 and above</option>
+                      <option [ngValue]="0">Rated 0 and above</option>
                     </select>
+                  </div>
+
+                  <div style="margin-top: 10px;" class="mr-3 input-block-filt">
+                    <ngx-slider (userChangeEnd)="priceFilterChanged($event)" [(value)]="priceFilterMinValue" [(highValue)]="priceFilterMaxValue" [options]="priceFilterOptions"></ngx-slider>
                   </div>
 
                 </div>
