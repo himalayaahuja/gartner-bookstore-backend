@@ -10,6 +10,7 @@ import { bookReducer } from './store/books/reducers/book.reducer';
 import { BookEffects } from './store/books/effects/book.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const routes = [
   {
@@ -24,6 +25,8 @@ const routes = [
   imports: [
     CommonModule,
     NgxSpinnerModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('books', bookReducer),
     EffectsModule.forFeature([BookEffects]),

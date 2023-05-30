@@ -126,4 +126,8 @@ export class BooksComponent implements OnInit, OnDestroy {
   public getAuthors(authors: string[]): string {
     return authors.join(', ');
   }
+
+  onRatingFilterChange(ratingFilterVal: number): void {
+    this.store.dispatch(loadBooks({ page: 1, filters: { ...this.filters, ratingMin: ratingFilterVal } as Filters }));
+  }
 }

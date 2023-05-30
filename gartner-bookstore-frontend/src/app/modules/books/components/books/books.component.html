@@ -8,11 +8,34 @@
             <div class="col-12">
               <div class="top-content clearfix">
 
-                <div class="search-bar-wrap">
-                  <form class="search-form" action="">
-                    <label>Search:</label>
-                    <input #bookSearchInput type="text" placeholder="Search.." name="search" />
-                  </form>
+                <div class="d-flex input-block-wrapper">
+
+                  <!-- <div class="search-bar-wrap">
+                    <form class="search-form" action="">
+                      <label>Search:</label>
+                      <input #bookSearchInput type="text" placeholder="Search.." name="search" />
+                    </form>
+                  </div> -->
+
+                  <div class="mr-3 input-block-filt">
+                    <h4>Search</h4>
+                    <input #bookSearchInput type="text" placeholder="Search.." name="search" class="form-control" />
+                  </div>
+
+                  <div class="mr-3 input-block-filt">
+                    <h4>Rating</h4>
+                    <select class="form-control" name="ratingFilter" [ngModel]="filters?.ratingMin"
+                      (ngModelChange)="onRatingFilterChange($event)">
+                      <option [ngValue]="">Select Rating</option>
+                      <option [ngValue]="5">5</option>
+                      <option [ngValue]="4">4 and above</option>
+                      <option [ngValue]="3">3 and above</option>
+                      <option [ngValue]="2">2 and above</option>
+                      <option [ngValue]="1">1 and above</option>
+                      <option [ngValue]="0">0 and above</option>
+                    </select>
+                  </div>
+
                 </div>
 
                 <ul class="list-unstyled d-flex float-right mb-0">
