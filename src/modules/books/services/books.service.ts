@@ -13,7 +13,7 @@ export class BooksService {
 
   async findAll(filterQueryParams: GetBooksQuery): Promise<any> {
     const searchFilter = filterQueryParams.searchQuery ? { $text: { $search: `${filterQueryParams.searchQuery}` } } : {};
-    const priceFilter = { $and: [{ price: { $gte: filterQueryParams.priceRangeFrom } }, { price: { $lt: filterQueryParams.priceRangeTo } }] };
+    const priceFilter = { $and: [{ price: { $gte: filterQueryParams.priceRangeFrom } }, { price: { $lte: filterQueryParams.priceRangeTo } }] };
     const booksAggregateQuery = [
       { $match: { $and: [searchFilter, priceFilter] } },
       {
@@ -56,7 +56,7 @@ export class BooksService {
             ? BOOK_PAGE_SIZE
             : doc.totalItems % BOOK_PAGE_SIZE;
       meta.itemsPerPage = BOOK_PAGE_SIZE;
-      meta.totalPages = Math.ceil(doc.totalItems.totalItems / BOOK_PAGE_SIZE);
+      meta.totalPages = Math.ceil(doc.totalItems / BOOK_PAGE_SIZE);
       meta.currentPage = filterQueryParams.page;
       filterQueryParams.priceRangeTo = doc.maxPriceRange;
     });

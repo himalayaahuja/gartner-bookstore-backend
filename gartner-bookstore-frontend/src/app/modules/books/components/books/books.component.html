@@ -7,6 +7,14 @@
           <div class="row">
             <div class="col-12">
               <div class="top-content clearfix">
+
+                <div class="search-bar-wrap">
+                  <form class="search-form" action="">
+                    <label>Search:</label>
+                    <input #bookSearchInput type="text" placeholder="Search.." name="search" />
+                  </form>
+                </div>
+
                 <ul class="list-unstyled d-flex float-right mb-0">
                   <li>
                     <a style="cursor: pointer;" class="btn-theam btn-hover-yellow">
@@ -51,7 +59,7 @@
                   <tbody>
                     <tr style="cursor: pointer;" *ngFor="let book of books; let i = index">
                       <td>{{book.title}}</td>
-                      <td>{{book.authors[0]}}</td>
+                      <td>{{ getAuthors(book.authors) }}</td>
                       <td>{{book.price}}</td>
                       <td>{{book.rating}}</td>
                       <td>
