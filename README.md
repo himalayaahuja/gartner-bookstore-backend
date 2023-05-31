@@ -31,20 +31,27 @@ ratings filter and price range filtering with user login functionality and add t
 Node : 18.16.0, NPM version : 9.5.1, standalone mongodb installed on your machine (currently using 6.0.5)
 
 ## Installation to set up locally
-1. run the following command in project root directory first
+1. clone the repository
+2. run the following command in project root directory first
 
 ```bash
 $ npm install
 ```
-2. cd into project's `gartner-bookstore-frontend` directory and run the following command again
+3. cd into project's `gartner-bookstore-frontend` directory and run the following command again
 
 ```bash
 $ npm install
 ```
-3. Create a .env file in project root directory from the given .env.example file and provide values to the defined variables
-4. Make sure we have a valid mongodb uri mentioned in .env file and the mongodb instance running
-5. Import the books data from the file `books.json`
-6. Seed user data into the database by running  the following command
+4. Back in the project root directory i.e `gartner-bookstore-backend` create a .env file in project root directory from the given .env.example file and provide values to the defined variables
+5. Make sure we have a valid mongodb uri mentioned in .env file (including a fresh database name like `gartner-bookstore`) and the mongodb instance running
+6. Import the books data from the file `books.json` using the following command from your terminal make sure to run the command from the same directory as the one `books.json` is in.: 
+
+```bash
+$ mongoimport books.json -d gartner-bookstore -c books --jsonArray --drop
+```
+make sure the database name in .env uri is same as the one referenced in above command viz `gartner-bookstore`
+
+8. Seed user data into the database by running  the following command from project root directory
 
 ```bash
 $ npx nestjs-command add-user:seed

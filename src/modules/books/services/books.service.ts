@@ -12,8 +12,8 @@ export class BooksService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
   async findAll(filterQueryParams: GetBooksQuery): Promise<any> {
-    const minPriceAnchor = (await this.bookModel.find().sort({ price: 1 }).limit(1).exec())[0].price;
-    const maxPriceAnchor = (await this.bookModel.find().sort({ price: -1 }).limit(1).exec())[0].price;
+    const minPriceAnchor = (await this.bookModel.find().sort({ price: 1 }).limit(1).exec())[0]?.price;
+    const maxPriceAnchor = (await this.bookModel.find().sort({ price: -1 }).limit(1).exec())[0]?.price;
 
     const searchFilter = filterQueryParams.searchQuery ? { $text: { $search: `${filterQueryParams.searchQuery}` } } : {};
     const priceFilter = {
@@ -79,8 +79,10 @@ export class BooksService {
     filterQueryParams.priceRangeFrom = filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor;
     filterQueryParams.priceRangeTo = filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor;
 
-    (filterQueryParams as any).minPriceAnchor = minPriceAnchor;
-    (filterQueryParams as any).maxPriceAnchor = maxPriceAnchor;
+    (filterQueryParams as any).minPriceAnchor = minPriceAnchor ? minPriceAnchor : 0;
+    (filterQueryParams as any).maxPriceAnchor = maxPriceAnchor ? maxPriceAnchor : 0;
+    filterQueryParams.priceRangeFrom = filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : 0;
+    filterQueryParams.priceRangeTo = filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : 0;
 
     return {
       items,
