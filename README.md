@@ -51,7 +51,7 @@ $ mongoimport books.json -d gartner-bookstore -c books --jsonArray --drop
 ```
 make sure the database name in .env `MONGODB_URI` is same as the one referenced in above command viz `gartner-bookstore`
 
-1. Seed user data into the database by running  the following command from project root directory
+7. Seed user data into the database by running  the following command from project root directory
 
 ```bash
 $ npx nestjs-command add-user:seed
