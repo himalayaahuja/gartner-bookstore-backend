@@ -11,6 +11,8 @@ import { LabelType, Options, ChangeContext, PointerType } from 'ngx-slider-v2';
 import { AppState as AuthAppState } from 'src/app/store';
 import { User } from 'src/app/store/auth/models/auth-user.model';
 import { MatSnackBar, MatSnackBarRef, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ROUTE_LOGIN } from 'src/app/app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -49,7 +51,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   @ViewChild('bookSearchInput', { static: true }) projectSearchInput: ElementRef | undefined;
 
-  constructor(private store: Store<AppState>, private authStore: Store<AuthAppState>, private _snackBar: MatSnackBar) { }
+  constructor(private store: Store<AppState>, private authStore: Store<AuthAppState>, private _snackBar: MatSnackBar, private router: Router) { }
   ngOnDestroy(): void {
     if (this.booksSubscription) {
       this.booksSubscription.unsubscribe();
@@ -200,6 +202,7 @@ export class BooksComponent implements OnInit, OnDestroy {
       snackBarRef._dismissAfter(5000);
       snackBarRef.onAction().subscribe(() => {
         // console.log('closed');
+        this.router.navigate([ROUTE_LOGIN]);
       });
     } else {
       this._snackBar.open('Added to cart!')._dismissAfter(3000);

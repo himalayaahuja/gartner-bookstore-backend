@@ -33,7 +33,13 @@
               "src/styles.css",
               "src/assets/css/responsive.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/summernote/dist/summernote-lite.min.js",
+              "src/assets/js/jquery.easing.min.js"
+            ]
           },
           "configurations": {
             "production": {

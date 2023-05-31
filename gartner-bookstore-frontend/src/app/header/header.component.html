@@ -3,31 +3,32 @@
 
 <!-- Topbar -->
 <section>
-  <nav id="top-header" class="navbar navbar-expand navbar-light fixed-top my-navbar">
-    <ul class="navbar-nav ml-auto align-items-center">
-      <!-- User Dropdown Details -->
-      <li class="nav-item dropdown">
-        <a *ngIf="authUser" class="nav-link dropdown-toggle" style="cursor: pointer;" id="userDropdown" role="button"
-          data-toggle="dropdown">
-          {{authUser.email}}
-        </a>
-        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right py-0 rounded-0" aria-labelledby="alertsDropdown">
-          <div class="dropdown-menu-header">
-            <!-- <a class="dropdown-item" style="cursor: pointer;"><i class="far fa-user-circle"></i>Account</a> -->
-            <!-- <a class="dropdown-item" style="cursor: pointer;"><i class="fas fa-cog"></i>Settings</a> -->
-            <a style="cursor: pointer;" class="dropdown-item" (click)="logout()"><i
-                class="fas fa-sign-out-alt"></i>Logout</a>
-          </div>
-        </div>
-      </li>
-      <li class="nav-item">
-        <!-- User Image -->
-        <a style="cursor: pointer;" class="nav-link">
-          <img src="assets/images/ic_account_circle_24px@2x.png" />
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <nav id="top-header" class="navbar navbar-expand navbar-light fixed-top my-navbar">
+        <ul class="navbar-nav ml-auto align-items-center">
+            <!-- User Dropdown Details -->
+            <li class="nav-item dropdown">
+                <a *ngIf="authUser" class="nav-link dropdown-toggle" style="cursor: pointer;" id="userDropdown"
+                    role="button" data-toggle="dropdown">
+                    {{authUser.email}}
+                </a>
+                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right py-0 rounded-0"
+                    aria-labelledby="alertsDropdown">
+                    <div class="dropdown-menu-header">
+                        <!-- <a class="dropdown-item" style="cursor: pointer;"><i class="far fa-user-circle"></i>Account</a> -->
+                        <!-- <a class="dropdown-item" style="cursor: pointer;"><i class="fas fa-cog"></i>Settings</a> -->
+                        <a style="cursor: pointer;" class="dropdown-item" (click)="logout()"><i
+                                class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <!-- User Image -->
+                <a style="cursor: pointer;" class="nav-link">
+                    <img src="assets/images/ic_account_circle_24px@2x.png" />
+                </a>
+            </li>
+        </ul>
+    </nav>
 </section>
 <!-- End of Topbar -->
 <!-- End Header -->
