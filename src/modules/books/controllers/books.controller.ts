@@ -10,7 +10,6 @@ export class BooksController {
   @Get()
   @UsePipes(new ValidationPipe({ transform: true }))
   findAll(@Query() filterQueryParams: GetBooksQuery) {
-    console.log(filterQueryParams);
     return this.booksService.findAll(filterQueryParams);
   }
 

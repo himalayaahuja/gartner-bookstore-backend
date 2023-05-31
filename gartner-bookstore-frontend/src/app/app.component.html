@@ -1,0 +1,5 @@
+<div id="wrapper" class="content-wrap">
+  <app-sidebar *ngIf="activePage != routeLogin" [activePage]="activePage"></app-sidebar>
+  <app-header *ngIf="activePage != routeLogin"></app-header>
+  <router-outlet></router-outlet>
+</div>

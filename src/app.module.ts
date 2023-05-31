@@ -8,6 +8,9 @@ import { UsersModule } from './modules/users/users.module';
 import { SeedsModule } from './modules/seeds/seeds.module';
 import { CommandModule } from 'nestjs-command';
 import { AuthModule } from './modules/auth/auth.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+
 
 @Module({
   imports: [
@@ -19,6 +22,10 @@ import { AuthModule } from './modules/auth/auth.module';
       }),
       inject: [ConfigService],
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, './', 'gartner-bookstore-frontend'),
+      // exclude: ['/api*'],
+    }),
     BooksModule,
     UsersModule,
     CommandModule,
@@ -28,4 +35,4 @@ import { AuthModule } from './modules/auth/auth.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

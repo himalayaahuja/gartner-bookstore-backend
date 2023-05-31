@@ -6,7 +6,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "nest build",
+    "build:prod": "nest build && cd ./gartner-bookstore-frontend && npx @angular/cli build --configuration production --output-path ../dist/gartner-bookstore-frontend && cd ..",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -17,7 +19,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "dist": "cp -R src/public dist/public && cp package.json dist/package.json && cp package-lock.json dist/package-lock.json && cd dist && zip ./build.zip -r ./ && cd .."
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
@@ -28,6 +31,7 @@
     "@nestjs/mongoose": "^9.2.2",
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/serve-static": "^3.0.1",
     "@types/bcrypt": "^5.0.0",
     "@types/ramda": "^0.29.2",
     "bcrypt": "^5.1.0",

@@ -11,33 +11,82 @@ import { BOOK_PAGE_SIZE } from '../constants/index.constant';
 export class BooksService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
-  async findAll(filterQueryParams: GetBooksQuery): Promise<Book[]> {
-    const searchFilter =
-      filterQueryParams.title || filterQueryParams.author ? { $text: { $search: `${filterQueryParams.title} ${filterQueryParams.author}` } } : {};
-    const priceFilter = { $and: [{ price: { $gte: filterQueryParams.priceRangeFrom } }, { price: { $lt: filterQueryParams.priceRangeTo } }] };
-    return this.bookModel
-      .aggregate([
-        { $match: { $and: [searchFilter, priceFilter] } },
-        {
-          $project: {
-            title: 1,
-            isbn: 1,
-            authors: 1,
-            genre: 1,
-            publisher: 1,
-            publicationDate: 1,
-            rating: { $round: [{ $avg: '$reviews.rating' }, 1] },
-            price: 1,
-            stock: 1,
-          },
+  async findAll(filterQueryParams: GetBooksQuery): Promise<any> {
+    const minPriceAnchor = (await this.bookModel.find().sort({ price: 1 }).limit(1).exec())[0].price;
+    const maxPriceAnchor = (await this.bookModel.find().sort({ price: -1 }).limit(1).exec())[0].price;
+
+    const searchFilter = filterQueryParams.searchQuery ? { $text: { $search: `${filterQueryParams.searchQuery}` } } : {};
+    const priceFilter = {
+      $and: [
+        { price: { $gte: filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor } },
+        { price: { $lte: filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor } },
+      ],
+    };
+    const booksAggregateQuery = [
+      { $match: { $and: [searchFilter, priceFilter] } },
+      {
+        $project: {
+          title: 1,
+          isbn: 1,
+          authors: 1,
+          genre: 1,
+          publisher: 1,
+          publicationDate: 1,
+          rating: { $round: [{ $avg: '$reviews.rating' }, 1] },
+          price: 1,
+          stock: 1,
         },
-        filterQueryParams.ratingMin === 0
-          ? { $match: { $or: [{ rating: { $gte: filterQueryParams.ratingMin } }, { rating: null }] } }
-          : { $match: { rating: { $gte: filterQueryParams.ratingMin } } },
-      ])
+      },
+      filterQueryParams.ratingMin === 0
+        ? { $match: { $or: [{ rating: { $gte: filterQueryParams.ratingMin } }, { rating: null }] } }
+        : { $match: { rating: { $gte: filterQueryParams.ratingMin } } },
+      {
+        $group: {
+          _id: null,
+          // minPriceRange: { $min: '$price' },
+          // maxPriceRange: { $max: '$price' },
+          totalItems: { $sum: 1 },
+          items: { $push: '$$ROOT' },
+        },
+      },
+      { $unwind: '$items' },
+      { $project: { _id: 0 } },
+    ];
+
+    const aggregateCursor = this.bookModel
+      .aggregate(booksAggregateQuery)
       .skip((filterQueryParams.page - 1) * BOOK_PAGE_SIZE)
       .limit(BOOK_PAGE_SIZE)
-      .exec();
+      .cursor();
+
+    const meta: any = {};
+    const items = [];
+
+    await aggregateCursor.eachAsync((doc, i) => {
+      items.push(doc.items);
+      meta.totalItems = doc.totalItems;
+      meta.itemCount =
+        doc.totalItems < BOOK_PAGE_SIZE
+          ? doc.totalItems
+          : doc.totalItems >= filterQueryParams.page * BOOK_PAGE_SIZE
+            ? BOOK_PAGE_SIZE
+            : doc.totalItems % BOOK_PAGE_SIZE;
+      meta.itemsPerPage = BOOK_PAGE_SIZE;
+      meta.totalPages = Math.ceil(doc.totalItems / BOOK_PAGE_SIZE);
+      meta.currentPage = filterQueryParams.page;
+    });
+
+    filterQueryParams.priceRangeFrom = filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor;
+    filterQueryParams.priceRangeTo = filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor;
+
+    (filterQueryParams as any).minPriceAnchor = minPriceAnchor;
+    (filterQueryParams as any).maxPriceAnchor = maxPriceAnchor;
+
+    return {
+      items,
+      meta,
+      filters: filterQueryParams,
+    };
   }
 
   findOne(id: number) {
