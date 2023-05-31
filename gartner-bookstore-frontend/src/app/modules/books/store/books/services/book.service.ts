@@ -28,7 +28,8 @@ export class BookService {
     return this.http.request(method, url, {
       body,
       responseType: responseType ? responseType : 'json',
-      headers: { authorization: `Bearer ${this.auth.token}` },
+      // headers: { authorization: `Bearer ${this.auth.token}` },
+      headers: { 'x-api-key': environment.apiKey },
     });
   }
 
