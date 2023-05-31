@@ -7,6 +7,7 @@ import { AppState } from '../..';
 import { AuthService } from '../services/auth.service';
 import * as fromAuth from '../actions/auth.actions';
 import { User } from '../models/auth-user.model';
+import { CartItem } from '../models/cart-item.dto';
 
 @Injectable()
 export class AuthEffects {
@@ -38,6 +39,20 @@ export class AuthEffects {
             this.store.dispatch(new fromAuth.SetCurrentUser(null));
             this.authService.token = null;
             return of(new fromAuth.SetAuthError(err));
+          }),
+        ),
+      ),
+    ),
+  );
+
+  addToCart$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType<fromAuth.AddToCart>(fromAuth.AuthActions.ADD_TO_CART),
+      mergeMap((action: fromAuth.AddToCart) =>
+        this.authService.addToCart(action.payload).pipe(
+          map((cart: CartItem[]) => new fromAuth.AddToCartSuccess(cart)),
+          catchError((err) => {
+            return of(new fromAuth.AddToCartError(err));
           }),
         ),
       ),

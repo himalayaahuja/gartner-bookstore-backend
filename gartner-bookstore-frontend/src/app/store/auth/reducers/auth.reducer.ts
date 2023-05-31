@@ -29,6 +29,17 @@ export function AuthReducer(state: AuthState = initialState, action: Action): Au
     case AuthActions.SET_AUTH_ERROR:
       return { ...state, loading: false, error: specificAction.payload };
 
+    case AuthActions.ADD_TO_CART:
+      return { ...state, loading: true, error: null };
+
+    case AuthActions.ADD_TO_CART_SUCCESS:
+      const updatedUser: any = { ...state.user };
+      updatedUser.cart = specificAction.payload;
+      return { user: updatedUser, loading: false, error: null };
+
+    case AuthActions.ADD_TO_CART_ERROR:
+      return { ...state, loading: false, error: specificAction.payload };
+
     default:
       return state;
   }

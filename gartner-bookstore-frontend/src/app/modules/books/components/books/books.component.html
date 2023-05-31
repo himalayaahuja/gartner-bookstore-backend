@@ -94,8 +94,17 @@
                       <td>
                         <div class="d-flex align-items-center justify-content-end">
                           <div class="mr-3">
-                            <a (click)="openSnackBar('Please login to continue', 'Login')" href="javascript:void(0);"
+
+                            <a *ngIf="!authUser" (click)="openSnackBar('Please login to continue', 'Login')"
+                              href="javascript:void(0);"
                               class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Add to cart</a>
+
+                            <a *ngIf="authUser && !existsInCart(i)" (click)="addToCart(i)" href="javascript:void(0);"
+                              class="btn-theam btn_theam btn-hover-yellow px-4 edit-supplier-btn">Add to cart</a>
+
+                            <a *ngIf="authUser && existsInCart(i)" href="javascript:void(0);"
+                              class="btn-theam btn_theam btn-hover-yellow in-cart px-4 edit-supplier-btn">In cart</a>
+
                           </div>
                         </div>
                       </td>
