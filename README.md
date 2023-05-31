@@ -83,6 +83,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## User Credentials for testing
+```bash
+email : himalaya.ahuja@outlook.com
+password : admin@123
+```
 
 ## License
 
