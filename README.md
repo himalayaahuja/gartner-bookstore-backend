@@ -24,26 +24,45 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest] Sample bookstore monorepo that allows users to browse through books via paging, filter via title, author (words only search)
+ratings filter and price range filtering with user login functionality and add to cart feature.
 
-## Installation
+## Requirements
+Node : 18.16.0, NPM version : 9.5.1, standalone mongodb installed on your machine (currently using 6.0.5)
+
+## Installation to set up locally
+1. run the following command in project root directory first
 
 ```bash
 $ npm install
 ```
-
-## Running the app
+2. cd into project's `gartner-bookstore-frontend` directory and run the following command again
 
 ```bash
-# development
-$ npm run start
+$ npm install
+```
+3. Create a .env file in project root directory from the given .env.example file and provide values to the defined variables
+4. Make sure we have a valid mongodb uri mentioned in .env file and the mongodb instance running
+5. Import the books data from the file `books.json`
+6. Seed user data into the database by running  the following command
 
-# watch mode
-$ npm run start:dev
+```bash
+$ npx nestjs-command add-user:seed
+```
+   
 
-# production mode
+## Running the app in production mode on your machine
+
+1. Back into the project root directory i.e `gartner-bookstore-backend`, run the following commands in succession
+
+```bash
+# building backend and frontend apps first
+$ npm run build:prod
+
+# running in production mode
 $ npm run start:prod
 ```
+2. Open browser at address `http://localhost:3000`
 
 ## Test
 
@@ -57,16 +76,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
