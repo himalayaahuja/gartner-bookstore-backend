@@ -8,9 +8,11 @@ import { User } from '../models/auth-user.model';
 import { LoginResponse } from '../models/login-res.model';
 import { ROUTE_LOGIN } from 'src/app/app.routes';
 import { environment } from '../../../../environments/environment';
+import { AddToCartDto } from '../models/add-to-cart.dto';
+import { CartItem } from '../models/cart-item.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private api: string = environment.apiUrl + '/api/v1';
@@ -23,13 +25,26 @@ export class AuthService {
         this.token = res.auth.access_token;
         this.userId = res.user._id;
         return of(res.user);
-      })
+      }),
     );
+  }
+
+  addToCart(data: AddToCartDto): Observable<CartItem[]> {
+    return this.http
+      .post<CartItem[]>(`${this.api}/users/add-to-cart`, data, {
+        headers: { Authorization: `Bearer ${this.token}` },
+      })
+      .pipe(
+        mergeMap((res: CartItem[]) => {
+          // any additional processing can be done here
+          return of(res);
+        }),
+      );
   }
 
   whoami(): Observable<User> {
     return this.http.get<User>(`${this.api}/users/me`, {
-      headers: { Authorization: `Bearer ${this.token}` }
+      headers: { Authorization: `Bearer ${this.token}` },
     });
   }
 

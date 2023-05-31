@@ -1,3 +1,5 @@
+import { CartItem } from './cart-item.dto';
+
 export interface User {
 
   readonly _id: number;
@@ -8,4 +10,5 @@ export interface User {
 
   readonly email: string;
 
+  readonly cart: CartItem[];
 }

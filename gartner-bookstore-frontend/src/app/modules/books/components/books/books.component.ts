@@ -13,6 +13,8 @@ import { User } from 'src/app/store/auth/models/auth-user.model';
 import { MatSnackBar, MatSnackBarRef, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ROUTE_LOGIN } from 'src/app/app.routes';
 import { Router } from '@angular/router';
+import { AddToCart } from 'src/app/store/auth/actions/auth.actions';
+import { AddToCartDto } from 'src/app/store/auth/models/add-to-cart.dto';
 
 @Component({
   selector: 'app-books',
@@ -197,15 +199,25 @@ export class BooksComponent implements OnInit, OnDestroy {
   }
 
   openSnackBar(message: string, action: string) {
+    const snackBarRef = this._snackBar.open(message, action);
+    snackBarRef._dismissAfter(5000);
+    snackBarRef.onAction().subscribe(() => {
+      // console.log('closed');
+      this.router.navigate([ROUTE_LOGIN]);
+    });
+  }
+
+  addToCart(bookIndex: number) {
+    const book = this.books[bookIndex];
+    // console.log('addingToCart', book);
+    this.store.dispatch(new AddToCart({ bookId: book._id } as AddToCartDto));
+  }
+  existsInCart(bookIndex: number): boolean {
     if (!this.authUser) {
-      const snackBarRef = this._snackBar.open(message, action);
-      snackBarRef._dismissAfter(5000);
-      snackBarRef.onAction().subscribe(() => {
-        // console.log('closed');
-        this.router.navigate([ROUTE_LOGIN]);
-      });
-    } else {
-      this._snackBar.open('Added to cart!')._dismissAfter(3000);
+      return false;
     }
+    const book = this.books[bookIndex];
+    const foundIndex = this.authUser.cart.findIndex((item) => item.book._id === book._id);
+    return foundIndex > -1;
   }
 }
