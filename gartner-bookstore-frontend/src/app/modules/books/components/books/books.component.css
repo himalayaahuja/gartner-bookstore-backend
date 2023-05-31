@@ -32,6 +32,12 @@
   color: white !important;
 }
 
+.in-cart {
+  background-color: #fdc300;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 /* ------------------------ */
 
 .fileover {
@@ -164,16 +170,19 @@ a.browse-text {
   color: #fff;
 }
 
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white !important;
   opacity: 1; /* Firefox */
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: white !important;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
+::-ms-input-placeholder {
+  /* Microsoft Edge */
   color: white !important;
 }
 /* 303c4e */
