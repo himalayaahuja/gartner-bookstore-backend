@@ -20,7 +20,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "dist": "cp -R src/public dist/public && cp package.json dist/package.json && cp package-lock.json dist/package-lock.json && cd dist && zip ./build.zip -r ./ && cd .."
+    "dist": "cp -R src/public dist/public && cp -R .ebextensions dist/.ebextensions && cp -R .platform dist/.platform && cp .npmrc dist/.npmrc && cp Procfile dist/Procfile && cp package.json dist/package.json && cp package-lock.json dist/package-lock.json && cd dist && zip ./build.zip -r ./ && cd .."
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
