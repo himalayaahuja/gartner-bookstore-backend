@@ -1,0 +1,12 @@
+branch-defaults:
+  master:
+    environment: Gartner-bookstore-env-1
+deploy:
+  artifact: dist/build.zip
+global:
+  application_name: gartner-bookstore
+  default_platform: Node.js 18 running on 64bit Amazon Linux 2/5.8.2
+  default_region: us-east-1
+  include_git_submodules: true
+  sc: git
+  workspace_type: Application
