@@ -1,1 +1,1 @@
-web: start:prod:cloud
+web: npm run start:prod:cloud
