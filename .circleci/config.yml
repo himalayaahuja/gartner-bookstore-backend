@@ -7,7 +7,7 @@ jobs:
 
     # Docker environment where we gonna run our build deployment scripts
     docker:
-      - image: circleci/node:18.16
+      - image: circleci/node:18.16.0
 
     steps:
       - checkout
