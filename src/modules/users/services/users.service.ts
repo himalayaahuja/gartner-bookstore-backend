@@ -4,7 +4,6 @@ import { CartItem, User, UserDocument } from '../schemas/user.schema';
 import { Model } from 'mongoose';
 import * as mongoose from 'mongoose';
 import { UserSeedInput } from '../dto/user-seed.dto';
-import { BookDocument } from 'src/modules/books/schemas/book.schema';
 
 @Injectable()
 export class UsersService {
