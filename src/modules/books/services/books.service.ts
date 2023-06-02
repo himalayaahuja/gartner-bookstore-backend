@@ -6,12 +6,13 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Book } from '../schemas/book.schema';
 import { GetBooksQuery } from '../dto/list-filtered-books.dto';
 import { BOOK_PAGE_SIZE } from '../constants/index.constant';
+import { GetBooksFilters, GetBooksResponseDto } from '../dto/get-books-response.dto';
 
 @Injectable()
 export class BooksService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) { }
 
-  async findAll(filterQueryParams: GetBooksQuery): Promise<any> {
+  async findAll(filterQueryParams: GetBooksQuery): Promise<GetBooksResponseDto> {
     const minPriceAnchor = (await this.bookModel.find().sort({ price: 1 }).limit(1).exec())[0]?.price;
     const maxPriceAnchor = (await this.bookModel.find().sort({ price: -1 }).limit(1).exec())[0]?.price;
 
@@ -87,7 +88,7 @@ export class BooksService {
     return {
       items,
       meta,
-      filters: filterQueryParams,
+      filters: filterQueryParams as unknown as GetBooksFilters,
     };
   }
 
