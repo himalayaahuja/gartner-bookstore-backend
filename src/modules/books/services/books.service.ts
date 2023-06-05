@@ -77,6 +77,8 @@ export class BooksService {
       meta.currentPage = filterQueryParams.page;
     });
 
+    aggregateCursor.close();
+
     filterQueryParams.priceRangeFrom = filterQueryParams.priceRangeFrom ? filterQueryParams.priceRangeFrom : minPriceAnchor;
     filterQueryParams.priceRangeTo = filterQueryParams.priceRangeTo ? filterQueryParams.priceRangeTo : maxPriceAnchor;
 
