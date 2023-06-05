@@ -24,6 +24,9 @@
                   <p *ngIf="loginForm.get('email')?.errors?.['required']" class="validation-error">
                     &nbsp; Email is required.
                   </p>
+                  <p *ngIf="loginForm.get('email')?.errors?.['email']" class="validation-error">
+                    &nbsp; Enter a valid email address.
+                  </p>
                 </div>
                 <!-- validation errors -->
 
