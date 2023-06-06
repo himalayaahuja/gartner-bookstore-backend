@@ -58,13 +58,13 @@ $ npx nestjs-command add-user:seed
 ```
    
 
-## Running the app in production mode on your machine
+## Running the app on your machine
 
 1. Back into the project root directory i.e `gartner-bookstore-backend`, run the following commands in succession
 
 ```bash
 # building backend and frontend apps first
-$ npm run build:prod
+$ npm run build:dev
 
 # running in production mode
 $ npm run start:prod
