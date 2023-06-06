@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "build:dev": "nest build && cd ./gartner-bookstore-frontend && npx @angular/cli build --configuration development --output-path ../dist/gartner-bookstore-frontend && cd ..",
     "build:prod": "nest build && cd ./gartner-bookstore-frontend && npx @angular/cli build --configuration production --output-path ../dist/gartner-bookstore-frontend && cd ..",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
