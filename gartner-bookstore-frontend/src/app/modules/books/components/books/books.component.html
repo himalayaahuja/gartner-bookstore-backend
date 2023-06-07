@@ -88,7 +88,7 @@
                     <tr style="cursor: pointer;" *ngFor="let book of books; let i = index">
                       <td>{{book.title}}</td>
                       <td>{{ getAuthors(book.authors) }}</td>
-                      <td>{{book.price}}</td>
+                      <td>$ {{book.price}}</td>
                       <td *ngIf="book.rating">{{book.rating}}</td>
                       <td *ngIf="!book.rating">No Ratings yet</td>
                       <td>
